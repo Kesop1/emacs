@@ -14,6 +14,7 @@
 
 
 ;;from https://gitlab.com/buildfunthings/emacs-config/blob/master/loader.org
+;;https://github.com/eschulte/emacs24-starter-kit
 
 ;;y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
