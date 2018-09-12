@@ -56,8 +56,7 @@
    (Quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://stable.melpa.org/packages/"))))
-;; insert packages names here
- '(package-selected-packages (quote (counsel swiper nyan-mode zenburn-theme)))
+ '(package-selected-packages (quote (dired-du counsel swiper nyan-mode zenburn-theme)))
  '(read-quoted-char-radix 16))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -65,3 +64,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;manually added packages folder
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; load the packages
+(load "dired+") ;; best not to include the ending “.el” or “.elc”
