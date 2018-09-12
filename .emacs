@@ -4,14 +4,18 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 
-;;install-packages-from-list
-;;bm
-;;counsel
-;;swiper
-;;nyan-mode
-;;zenburn-theme
 
+(mapc
+ (lambda (package)
+   (unless (package-installed-p package)
+     (progn (message "installing %s" package)
+            (package-refresh-contents)
+            (package-install package))))
+ '(bm counsel swiper nyan-mode zenburn-theme))
 
 ;;from https://gitlab.com/buildfunthings/emacs-config/blob/master/loader.org
 ;;https://github.com/eschulte/emacs24-starter-kit
@@ -41,16 +45,18 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" default)))
+    ("89dd0329d536d389753111378f2425bd4e4652f892ae8a170841c3396f5ba2dd" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" default)))
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
+ '(inhibit-startup-screen t)
  '(nyan-animate-nyancat t)
  '(nyan-mode t)
  '(nyan-wavy-trail t)
  '(package-archives
-   (quote
+   (Quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://stable.melpa.org/packages/"))))
+;; insert packages names here
  '(package-selected-packages (quote (counsel swiper nyan-mode zenburn-theme)))
  '(read-quoted-char-radix 16))
 (custom-set-faces
@@ -59,11 +65,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(fset 'get-install-packages-list
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217788 19 105 110 115 116 97 108 108 45 112 97 99 107 97 103 101 115 45 102 114 111 109 45 108 105 115 116 return 14 1] 0 "%d")) arg)))
-
-
-(fset 'get-packages-list
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217848 103 101 116 45 105 110 115 tab return 134217788 19 105 110 115 116 97 108 108 45 112 97 99 107 97 103 101 115 45 102 114 111 109 45 108 105 115 116 return 14 1 67108896 19 32 16] 0 "%d")) arg)))
-
